@@ -9,7 +9,7 @@ from ayon_core.pipeline.create import CreateContext
 
 host = registered_host()
 
-assert host is None, "No registered host."
+assert host, "No registered host."
 
 logging.basicConfig()
 log = logging.getLogger("publish-from-code")
@@ -22,7 +22,7 @@ create_context = CreateContext(host)
 #     if (some condition):
 #         instance["active"] = False
 #     instance["active"] = True
-# context.save_changes()
+# create_context.save_changes()
 
 pyblish_context = pyblish.api.Context()
 pyblish_context.data["create_context"] = create_context
