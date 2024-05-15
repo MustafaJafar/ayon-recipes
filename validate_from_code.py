@@ -2,42 +2,31 @@
 How to run validation plugins programmatically using pyblish api.
 """
 
-import hou
 import logging
-import pyblish.util
+import pyblish
 from ayon_core.pipeline import registered_host
 from ayon_core.pipeline.create import CreateContext
 
-logging.basicConfig()
-
-log = logging.getLogger("validate-from-code")
-log.setLevel(logging.DEBUG)
-
-all_input_nodes = [
-    hou.node('/out/reviewMain'),
-    hou.node('/out/S_BigRoboMain')
-]
-
-all_input_subsets = [n.evalParm("subset") for n in all_input_nodes]
-
 host = registered_host()
-context = CreateContext(host, reset=True)
 
-for instance in context.instances:
-    if instance.get("subset") not in all_input_subsets:
-        instance["active"] = False
-        instance.data["publish"] = False
-        continue
+assert host, "No registered host."
 
-    # make sure the instance is active
-    instance["active"] = True
+logging.basicConfig()
+log = logging.getLogger("publish-from-code")
+log.setLevel(logging.DEBUG)
+    
+create_context = CreateContext(host)
 
-context.save_changes()
-
+# # filter instances based on some condition
+# for instance in create_context.instances:
+#     if (some condition):
+#         instance["active"] = False
+#     instance["active"] = True
+# context.save_changes()
 
 pyblish_context = pyblish.api.Context()
-pyblish_context.data["create_context"] = context
-pyblish_plugins = context.publish_plugins
+pyblish_context.data["create_context"] = create_context
+pyblish_plugins = create_context.publish_plugins
 
 # Silent Run collect and validate order of pyblish plugins
 pyblish_context = pyblish.util.collect(pyblish_context, pyblish_plugins)
