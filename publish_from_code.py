@@ -2,10 +2,6 @@
 How to trigger publish programmatically using pyblish api.
 """
 
-"""
-How to trigger publish programmatically using pyblish api.
-"""
-
 import logging
 import pyblish
 from ayon_core.pipeline import registered_host
