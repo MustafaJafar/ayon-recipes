@@ -1,5 +1,4 @@
 """
-Example: 
 Get Template data and resolve work directory template.
 """
 import ayon_api
