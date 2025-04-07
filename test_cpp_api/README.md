@@ -3,7 +3,7 @@
 ## About AYON CPP API
 It's a static library that includes a subset of AYON API functions. It was primarily developed to support the development of [ayon-usd-resolver](https://github.com/ynput/ayon-usd-resolver).
 
-> It's called static because once the static library is linked into your executable at build time, the code from that library becomes part of your binary. After that, you no longer need the .lib or .a file to run your program.
+> It's called static because once the static library is linked into your executable at build time, the code from that library becomes part of your binary. After that, you no longer need the `.lib` or `.a` file to run your program.
 
 ## Fetch the AYON CPP Lib
 
