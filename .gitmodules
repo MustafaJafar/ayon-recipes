@@ -1,0 +1,4 @@
+[submodule "test_cpp_api/ext"]
+	path = test_cpp_api/ext
+	url = https://github.com/ynput/ayon-cpp-api.git
+	branch = develop
