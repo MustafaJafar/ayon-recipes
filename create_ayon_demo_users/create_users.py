@@ -21,7 +21,12 @@ for i in range(100):
     with open(f"{file_name}.json") as f:
         user_data = json.load(f)
         user_data["attrib"].pop("avatarUrl")
-        ayon.put(f"users/{user_name}", json=user_data)
+        user_data["defaultAccessGroups"] = ["artist"]
+        ayon.put(
+            f"users/{user_name}",
+            data=user_data,
+            password="ayon",
+        )
         print(f"User '{user_name}' is created.")
 
     with open(f"{file_name}.jpg", "rb") as f:
