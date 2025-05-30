@@ -13,9 +13,6 @@ task_name = "lookdev"
 folder_entity = ayon_api.get_folder_by_path(project_name, folder_path)
 task_entity = ayon_api.get_task_by_folder_path(project_name, folder_path, task_name)
 
-folder_entity = ayon_api.get_folder_by_path(project_name, folder_path)
-task_entity = ayon_api.get_task_by_folder_path(project_name, folder_path, task_name)
-
 changed = change_current_context(
     folder_entity,
     task_entity
