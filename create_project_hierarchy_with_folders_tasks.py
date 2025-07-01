@@ -41,9 +41,9 @@ def format_label(asset_name):
 project_name = "my_project" # get_current_project_name()
 asset_to_create = [f"asset_{i}" for i in range(1, 101)]
 tasks_to_create = {
-    # task_type: task_name,
-    "Modeling": "modeling",
-    "Lookdev": "lookdev",
+    # task_name: task_type,
+    "modeling": "Modeling",
+    "lookdev": "Lookdev",
 }
 
 # Get or create Parent Folder
@@ -79,14 +79,14 @@ for asset_name in asset_to_create:
     # Get or create tasks
     task_entities = ayon_api.get_tasks(project_name, folder_ids={asset_entity["id"]}, fields={"name", "id"})
     task_entities = {t["name"]:t for t in task_entities}
-    for task_type, task_name in tasks_to_create.items():
+    for task_name, task_type in tasks_to_create.items():
         if task_name in task_entities:
             task_entity = task_entities[task_name]
         else:
             task_entity = ayon_hub.add_new_task(
                     task_type=task_type,
                     name=task_name,
-                    label=task_type,
+                    label=format_label(task_name),
                     parent_id=asset_entity["id"],
                 )
         print(" ", task_name,":", task_entity["id"])
