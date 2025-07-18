@@ -30,9 +30,29 @@ On my side I made this simple project structure:
 
 
 ## Build And Run Commands
+
+- **Build CPP**
+    ```
+    git submodule update --init --recursive
+    cd ext\ayon-cpp-api
+    python AyonBuild.py --setup
+    python AyonBuild.py --runStageGRP CleanBuild
+    ```
+
+- **Build CPP Example**
+    ```
+    rmdir /s /q build
+    cmake -S . -B build -DJTRACE=0 
+    cmake --build ./build --config Debug -j12
+    ```
+- **Run CPP Example**
+    ```
+    build\Debug\main.exe
+    ```
+
+**Expected Output**:
 ```
-rmdir /s /q build
-cmake -S . -B build -DJTRACE=0 
-devenv build/main.sln /Build 
-build\Debug\main.exe
+Enter a project: Animal_Logic_ALab
+Enter a uri to resolve: ayon+entity://Animal_Logic_ALab/assets/book_encyclopedia01?product=usdAsset&version=v002&representation=usd
+The resolved path: H:\AYON\projects\Animal_Logic_ALab\assets\book_encyclopedia01\publish\usd\usdAsset\v002\ALA_book_encyclopedia01_usdAsset_v002.usd
 ```

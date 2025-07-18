@@ -1,1 +1,0 @@
-build_cpp_api.bat && build_and_run.bat
