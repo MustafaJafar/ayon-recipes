@@ -12,7 +12,7 @@ int main (){
         "your_access_token",      // This is a Bearer access token not AYON_API_KEY
         "https://your.server",    // with No trailing or forward slash at the end.
         project_name,
-        "military-mouse-of-jest"  // Your site id e.g. military-mouse-of-jest
+        "your-site-id"            // Your site id e.g. military-mouse-of-jest
     );
     
     std::string uri = "" ;
