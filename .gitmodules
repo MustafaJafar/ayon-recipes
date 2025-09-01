@@ -2,3 +2,7 @@
 	path = test_cpp_api/ext/ayon-cpp-api
 	url = https://github.com/ynput/ayon-cpp-api.git
 	branch = develop
+[submodule "test_cpp_api/ext/dotenv-cpp"]
+	path = test_cpp_api/ext/dotenv-cpp
+	url = https://github.com/laserpants/dotenv-cpp.git
+    branch = master

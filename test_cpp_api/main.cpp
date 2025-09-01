@@ -1,18 +1,22 @@
 // AYON CPP API Test
 #include <iostream>
+#include "dotenv.h"
 #include "AyonCppApi.h"
 
 int main (){
+
+    dotenv::init(); // loads from ".env"
+
     std::string project_name = "" ;
     std::cout << "Enter a project: ";
     std::cin >> project_name;
 
     AyonApi con = AyonApi(
-        "log/log.json",           // extension will be always changed to json
-        "your_access_token",      // This is a Bearer access token not AYON_API_KEY
-        "https://your.server",    // with No trailing or forward slash at the end.
+        std::getenv("LOG_FILE"),         // extension will be always changed to json.
+        std::getenv("AYON_API_KEY"),     // This is can be a Bearer access token or AYON_API_KEY.
+        std::getenv("AYON_SERVER_URL"),  // with No trailing or forward slash at the end.
         project_name,
-        "your-site-id"            // Your site id e.g. military-mouse-of-jest
+        std::getenv("AYON_SITE_ID")      // Your site id e.g. military-mouse-of-jest
     );
     
     std::string uri = "" ;
