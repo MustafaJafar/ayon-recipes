@@ -41,6 +41,10 @@ settings = response.data
 settings["publish"]["IntegrateHeroVersion"] = False
 
 # Set Settings
+# Note, here I'm using POST method.
+# However, some endpoints are using PUT instead like 
+#   https://docs.ayon.dev/api/#tag/Addons/operation/set_addon_site_settings
+# So, it's recommended to check the API docs first.
 response = ayon_api.post(
     entrypoint,
     **settings
